@@ -87,7 +87,7 @@ To replicate this analysis:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [your-repository-url]
+    git clone https://github.com/Ishant2104/SQL-Project-IMBD-Movie-Ratings.git
     ```
 2.  **Set up the Database:**
     * Open your SQL database management tool (e.g., MySQL Workbench, DBeaver).
