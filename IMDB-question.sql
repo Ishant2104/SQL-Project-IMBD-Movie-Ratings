@@ -1,19 +1,14 @@
 USE imdb;
 
 
-/* Now that you have imported the data sets, let’s explore some of the tables. 
+/* Now that I have imported the data sets, let’s explore some of the tables. 
  To begin with, it is beneficial to know the shape of the tables and whether any column has null values.
- Further in this segment, you will take a look at 'movies' and 'genre' tables.*/
-
+ Further in this segment, I will take a look at 'movies' and 'genre' tables.*/
 
 
 -- Segment 1:
 
-
-
-
 -- Q1. Find the total number of rows in each table of the schema?
--- Type your code below:
 SELECT COUNT(*) AS no_of_rows_in_movie FROM movie ;
 SELECT COUNT(*) AS no_of_rows_in_ratings FROM ratings ;
 SELECT COUNT(*) AS no_of_rows_in_names FROM names ;
@@ -30,7 +25,6 @@ SELECT COUNT(*) AS no_of_rows_in_director_mapping FROM director_mapping;
 
 
 -- Q2. Which columns in the movie table have null values?
--- Type your code below:
 
 SELECT
 	SUM(CASE WHEN title IS NULL THEN 1 ELSE 0 END) AS title_nulls,
@@ -46,7 +40,7 @@ FROM
 
 -- Columns with null values are : country, world_wide_gross, languages, production_comany
 
--- Now as you can see four columns of the movie table has null values. Let's look at the movies released each year. 
+-- Now as I can see four columns of the movie table has null values. Let's look at the movies released each year. 
 -- Q3. Find the total number of movies released each year? How does the trend look month wise? (Output expected)
 
 /* Output format for the first part:
@@ -68,7 +62,6 @@ Output format for the second part of the question:
 |	2			|	 231			|
 |	.			|		.			|
 +---------------+-------------------+ */
--- Type your code below:
 
 SELECT
 	year AS Year,
@@ -94,11 +87,10 @@ ORDER BY
 
 
 /*The highest number of movies is produced in the month of March.
-So, now that you have understood the month-wise trend of movies, let’s take a look at the other details in the movies table. 
+So, now that I have understood the month-wise trend of movies, let’s take a look at the other details in the movies table. 
 We know USA and India produces huge number of movies each year. Lets find the number of movies produced by USA or India for the last year.*/
   
 -- Q4. How many movies were produced in the USA or India in the year 2019??
--- Type your code below:
 
 SELECT
 	COUNT(id) AS number_of_movies
@@ -119,22 +111,17 @@ Exploring table Genre would be fun!!
 Let’s find out the different genres in the dataset.*/
 
 -- Q5. Find the unique list of the genres present in the data set?
--- Type your code below:
-
 SELECT DISTINCT genre
 FROM genre;
 
 -- The distinct genres are : 'Drama','Fantasy','Thriller','Comedy','Horror','Family','Romance','Adventure','Action','Sci-Fi','Crime','Mystery','Others'
 
 
-
 /* So, RSVP Movies plans to make a movie of one of these genres.
-Now, wouldn’t you want to know which genre had the highest number of movies produced in the last year?
+Now, wouldn’t we want to know which genre had the highest number of movies produced in the last year?
 Combining both the movie and genres table can give more interesting insights. */
 
 -- Q6.Which genre had the highest number of movies produced overall?
--- Type your code below:
-
 SELECT
 	genre,
     COUNT(*) AS number_of_movies
@@ -149,17 +136,14 @@ GROUP BY
 ORDER BY
 	number_of_movies DESC LIMIT 1;
 
-
 -- Drama genre has the highest number of movie released with 4285 movies released.
 
 
-/* So, based on the insight that you just drew, RSVP Movies should focus on the ‘Drama’ genre. 
+/* So, based on the insight that I just drew, RSVP Movies should focus on the ‘Drama’ genre. 
 But wait, it is too early to decide. A movie can belong to two or more genres. 
 So, let’s find out the count of movies that belong to only one genre.*/
 
 -- Q7. How many movies belong to only one genre?
--- Type your code below:
-
 SELECT COUNT(*) AS number_of_movies_with_one_genre
 FROM
 (
@@ -169,10 +153,7 @@ FROM
 	HAVING number_of_genre = 1
 ) AS movies_with_one_genre;
 
-
-
 -- There are total of 3289 movies having only one genre
-
 
 
 /* There are more than three thousand movies which has only one genre associated with them.
@@ -181,7 +162,6 @@ Now, let's find out the possible duration of RSVP Movies’ next project.*/
 
 -- Q8.What is the average duration of movies in each genre? 
 -- (Note: The same movie can belong to multiple genres.)
-
 
 /* Output format:
 
@@ -192,7 +172,6 @@ Now, let's find out the possible duration of RSVP Movies’ next project.*/
 |	.			|		.			|
 |	.			|		.			|
 +---------------+-------------------+ */
--- Type your code below:
 
 SELECT
 	genre,
@@ -211,12 +190,10 @@ ORDER BY
 -- Highest average duration are of Action genre
 
 
-/* Now you know, movies of genre 'Drama' (produced highest in number in 2019) has the average duration of 106.77 mins.
+/* Now I know, movies of genre 'Drama' (produced highest in number in 2019) has the average duration of 106.77 mins.
 Lets find where the movies of genre 'thriller' on the basis of number of movies.*/
 
 -- Q9.What is the rank of the ‘thriller’ genre of movies among all the genres in terms of number of movies produced? 
--- (Hint: Use the Rank function)
-
 
 /* Output format:
 +---------------+-------------------+---------------------+
@@ -224,7 +201,7 @@ Lets find where the movies of genre 'thriller' on the basis of number of movies.
 +---------------+-------------------+---------------------+
 |drama			|	2312			|			2		  |
 +---------------+-------------------+---------------------+*/
--- Type your code below:
+
 WITH number_of_movies_per_genre AS
 (
 	SELECT
@@ -245,17 +222,16 @@ FROM number_of_movies_per_genre
 WHERE
 	genre_rank = 3;
     
-    
 -- Thriller genre have a rank of 3 with a total of 1484 movies.
 
 
 /*Thriller movies is in top 3 among all genres in terms of number of movies
- In the previous segment, you analysed the movies and genres tables. 
- In this segment, you will analyse the ratings table as well.
+ In the previous segment, I analysed the movies and genres tables. 
+ In this segment, I will analyse the ratings table as well.
 To start with lets get the min and max values of different columns in the table*/
 
--- Segment 2:
 
+-- Segment 2:
 
 -- Q10.  Find the minimum and maximum values in  each column of the ratings table except the movie_id column?
 /* Output format:
@@ -264,7 +240,6 @@ To start with lets get the min and max values of different columns in the table*
 +---------------+-------------------+---------------------+----------------------+-----------------+-----------------+
 |		0		|			5		|	       177		  |	   2000	    		 |		0	       |	8			 |
 +---------------+-------------------+---------------------+----------------------+-----------------+-----------------+*/
--- Type your code below:
 
 SELECT 
     MIN(avg_rating) AS min_avg_rating,
@@ -277,7 +252,6 @@ FROM ratings;
 
 -- min_avg_rating | max_avg_rating | min_total_votes max_total_votes, min_median_rating, max_median_rating
 -- 		1.0,	  |		 10.0,	   |	 100, 			725138,			 	1,					 10
-
 
 /* So, the minimum and maximum values in each column of the ratings table are in the expected range. 
 This implies there are no outliers in the table. 
@@ -293,8 +267,6 @@ Now, let’s find out the top 10 movies based on average rating.*/
 |	.			|		.			|			.		  |
 |	.			|		.			|			.		  |
 +---------------+-------------------+---------------------+*/
--- Type your code below:
--- Keep in mind that multiple movies can be at the same rank. You only have to find out the top 10 movies (if there are more than one movies at the 10th place, consider them all.)
 
 SELECT * FROM (
 	SELECT
@@ -313,8 +285,8 @@ WHERE
 
 -- Kirket and Love in Kilnerry are at the 1st Rank with with an average raing of 10.0. 
 
-/* Do you find you favourite movie FAN in the top 10 movies with an average rating of 9.6? If not, please check your code again!!
-So, now that you know the top 10 movies, do you think character actors and filler actors can be from these movies?
+
+/*
 Summarising the ratings table based on the movie counts by median rating can give an excellent insight.*/
 
 -- Q12. Summarise the ratings table based on the movie counts by median ratings.
@@ -327,8 +299,6 @@ Summarising the ratings table based on the movie counts by median rating can giv
 |	.			|		.			|
 |	.			|		.			|
 +---------------+-------------------+ */
--- Type your code below:
--- Order by is good to have
 
 SELECT
 	median_rating,
@@ -339,8 +309,9 @@ GROUP BY
 ORDER BY
 	movie_count DESC;
 
-
 /* Movies with a median rating of 7 are highest in number. 
+
+
 Now, let's find out the production house with which RSVP Movies can partner for its next project.*/
 
 -- Q13. Which production house has produced the most number of hit movies (average rating > 8)??
@@ -350,7 +321,7 @@ Now, let's find out the production house with which RSVP Movies can partner for 
 +------------------+-------------------+---------------------+
 | The Archers	   |		1		   |			1	  	 |
 +------------------+-------------------+---------------------+*/
--- Type your code below:
+
 WITH top_production_company AS
 (
 	SELECT
@@ -376,8 +347,8 @@ FROM
 WHERE
 	prod_company_rank = 1 ;
 
--- It's ok if RANK() or DENSE_RANK() is used too
 -- Answer can be Dream Warrior Pictures or National Theatre Live or both
+
 
 -- Q14. How many movies released in each genre during March 2017 in the USA had more than 1,000 votes?
 /* Output format:
@@ -389,7 +360,6 @@ WHERE
 |	.			|		.			|
 |	.			|		.			|
 +---------------+-------------------+ */
--- Type your code below:
 
 SELECT
 	genre,
@@ -415,6 +385,9 @@ GROUP BY
 ORDER BY
 	movie_count DESC;
 
+/* Answer: movies released in each genre during March 2017 in the USA had more than 1,000 votes:
+
+Drama : 24 , Comedy: 9, Action: 8, Thriller: 8, Sci-Fi: 7, Crime: 6, Horror: 6, Mystery: 4, Romance: 4, Fantasy: 3, Adventure: 3, Family: 1
 
 
 -- Lets try to analyse with a unique problem statement.
@@ -428,9 +401,6 @@ ORDER BY
 |	.			|		.			|			.		  |
 |	.			|		.			|			.		  |
 +---------------+-------------------+---------------------+*/
--- Type your code below:
-
-
 
 SELECT
 	title,
@@ -454,11 +424,7 @@ ORDER BY
 	avg_rating DESC;
 
 
-
--- You should also try your hand at median rating and check whether the ‘median rating’ column gives any significant insights.
 -- Q16. Of the movies released between 1 April 2018 and 1 April 2019, how many were given a median rating of 8?
--- Type your code below:
-
 
 SELECT
 	median_rating,
@@ -476,11 +442,8 @@ WHERE
 
  -- There are 361 movies with the median rating of 8 and released between 1 April 2018 and 1 April 2019. 
 
+-- Q17. Do German movies get more votes than Italian movies?
 
--- Once again, try to solve the problem given below.
--- Q17. Do German movies get more votes than Italian movies? 
--- Hint: Here you have to find the total number of votes for both German and Italian movies.
--- Type your code below:
 SELECT
 	languages, 
     SUM(total_votes) as total_votes
@@ -497,21 +460,18 @@ GROUP BY
 
 -- Answer is Yes
 
-/* Now that you have analysed the movies, genres and ratings tables, let us now analyse another table, the names table. 
+/* Now that I have analysed the movies, genres and ratings tables, let me now analyse another table, the names table. 
 Let’s begin by searching for null values in the tables.*/
-
 
 -- Segment 3:
 
-
 -- Q18. Which columns in the names table have null values??
-/*Hint: You can find null values for individual columns or follow below output format
+/*
 +---------------+-------------------+---------------------+----------------------+
 | name_nulls	|	height_nulls	|date_of_birth_nulls  |known_for_movies_nulls|
 +---------------+-------------------+---------------------+----------------------+
 |		0		|			123		|	       1234		  |	   12345	    	 |
 +---------------+-------------------+---------------------+----------------------+*/
--- Type your code below:
 
 SELECT
 	SUM(CASE WHEN name IS NULL THEN 1 ELSE 0 END) AS name_nulls,
@@ -522,14 +482,11 @@ FROM
 	names;
 
 
-
-
 /* There are no Null value in the column 'name'.
 The director is the most important person in a movie crew. 
 Let’s find out the top three directors in the top three genres who can be hired by RSVP Movies.*/
 
 -- Q19. Who are the top three directors in the top three genres whose movies have an average rating > 8?
--- (Hint: The top three genres would have the most number of movies with an average rating > 8.)
 /* Output format:
 
 +---------------+-------------------+
@@ -539,8 +496,6 @@ Let’s find out the top three directors in the top three genres who can be hire
 |	.			|		.			|
 |	.			|		.			|
 +---------------+-------------------+ */
--- Type your code below:
-
 WITH top_three_genres AS 
 (
 	SELECT
@@ -590,8 +545,7 @@ ORDER BY
 
 -- Top three directors in the top 3 genres are: James Mangold with 4 movies, Joe Russo with 3 movies and Anthony Russo with 3 movies
 
-
-/* James Mangold can be hired as the director for RSVP's next project. Do you remeber his movies, 'Logan' and 'The Wolverine'. 
+/* James Mangold can be hired as the director for RSVP's next project.
 Now, let’s find out the top two actors.*/
 
 -- Q20. Who are the top two actors whose movies have a median rating >= 8?
@@ -603,7 +557,6 @@ Now, let’s find out the top two actors.*/
 |Christain Bale	|		10			|
 |	.			|		.			|
 +---------------+-------------------+ */
--- Type your code below:
 SELECT
 	name AS actor_name,
     COUNT(r.movie_id) AS movie_count
@@ -627,7 +580,7 @@ ORDER BY
 -- The top 2 actors with a medain rating of >= 8 are : 1.Mammootty with 8 movies,  2.Mohanlal with 5 movies.
 
 
-/* Have you find your favourite actor 'Mohanlal' in the list. If no, please check your code again. 
+/* 
 RSVP Movies plans to partner with other global production houses. 
 Let’s find out the top three production houses in the world.*/
 
@@ -640,8 +593,6 @@ Let’s find out the top three production houses in the world.*/
 |	.				|		.			|			.		  |
 |	.				|		.			|			.		  |
 +-------------------+-------------------+---------------------+*/
--- Type your code below:
-
 SELECT
 	production_company,
 	SUM(total_votes) AS vote_count,
@@ -669,7 +620,6 @@ Let’s find who these actors could be.*/
 
 -- Q22. Rank actors with movies released in India based on their average ratings. Which actor is at the top of the list?
 -- Note: The actor should have acted in at least five Indian movies. 
--- (Hint: You should use the weighted average based on votes. If the ratings clash, then the total number of votes should act as the tie breaker.)
 
 /* Output format:
 +---------------+-------------------+---------------------+----------------------+-----------------+
@@ -680,8 +630,6 @@ Let’s find who these actors could be.*/
 |		.		|			.		|	       .		  |	   .	    		 |		.	       |
 |		.		|			.		|	       .		  |	   .	    		 |		.	       |
 +---------------+-------------------+---------------------+----------------------+-----------------+*/
--- Type your code below:
-
 SELECT
 	name AS actor_name,
 	SUM(total_votes) as total_votes,
@@ -708,18 +656,15 @@ GROUP BY
 HAVING
 	movie_count>=5 ;
 
-
 -- The top three actors are: 1. Vijay Sethupathi
 -- 							 2. Fahadh Faasil
 -- 							 3. Yogi Babu				
 
-
-
 -- Top actor is Vijay Sethupathi
+
 
 -- Q23.Find out the top five actresses in Hindi movies released in India based on their average ratings? 
 -- Note: The actresses should have acted in at least three Indian movies. 
--- (Hint: You should use the weighted average based on votes. If the ratings clash, then the total number of votes should act as the tie breaker.)
 /* Output format:
 +---------------+-------------------+---------------------+----------------------+-----------------+
 | actress_name	|	total_votes		|	movie_count		  |	actress_avg_rating 	 |actress_rank	   |
@@ -729,9 +674,6 @@ HAVING
 |		.		|			.		|	       .		  |	   .	    		 |		.	       |
 |		.		|			.		|	       .		  |	   .	    		 |		.	       |
 +---------------+-------------------+---------------------+----------------------+-----------------+*/
--- Type your code below:
-
-
 SELECT
 	name AS actress_name,
 	SUM(total_votes) as total_votes,
@@ -760,18 +702,13 @@ GROUP BY
 HAVING
 	movie_count>=3 LIMIT 5;
 
-
 -- Top five actresses in Hindi movies released in India based on their average ratings are:  Taapsee Pannu, Kriti Sanon, Divya Dutta, Shraddha Kapoor, Kriti Kharbanda
-
-
 
 /* Taapsee Pannu tops with average rating 7.74. 
 Now let us divide all the thriller movies in the following categories and find out their numbers.*/
 
-
 /* Q24. Consider thriller movies having at least 25,000 votes. Classify them according to their average ratings in
    the following categories:  
-
 			Rating > 8: Superhit
 			Rating between 7 and 8: Hit
 			Rating between 5 and 7: One-time-watch
@@ -787,9 +724,6 @@ Now let us divide all the thriller movies in the following categories and find o
 |		.		|			.		|
 |		.		|			.		|
 +---------------+-------------------+*/
-
--- Type your code below:
-
 SELECT
 	title as movie_name,
     CASE
@@ -813,16 +747,15 @@ WHERE
 ORDER BY
 	avg_rating DESC ;
 
-
 -- There are 4 superhit movies with atleast 25000 votes. That are : Joker, Andhadhun, Ah-ga-ssi and Contratiempo.
 
-/* Until now, you have analysed various tables of the data set. 
-Now, you will perform some tasks that will give you a broader understanding of the data in this segment.*/
+
+/* Until now, we have analysed various tables of the data set. 
+Now, we will perform some tasks that will give you a broader understanding of the data in this segment.*/
 
 -- Segment 4:
 
 -- Q25. What is the genre-wise running total and moving average of the average movie duration? 
--- (Note: You need to show the output table in the question.) 
 /* Output format:
 +---------------+-------------------+---------------------+----------------------+
 | genre			|	avg_duration	|running_total_duration|moving_avg_duration  |
@@ -832,8 +765,6 @@ Now, you will perform some tasks that will give you a broader understanding of t
 |		.		|			.		|	       .		  |	   .	    		 |
 |		.		|			.		|	       .		  |	   .	    		 |
 +---------------+-------------------+---------------------+----------------------+*/
--- Type your code below:
-
 SELECT
 	genre,
     ROUND(AVG(duration),2) AS avg_duration,
@@ -867,12 +798,6 @@ ORDER BY
 -- Thriller		101.58			1341.03						102.389091
 
 
-
-
-
--- Round is good to have and not a must have; Same thing applies to sorting
-
-
 -- Let us find top 5 movies of each year with top 3 genres.
 
 -- Q26. Which are the five highest-grossing movies of each year that belong to the top three genres? 
@@ -887,7 +812,6 @@ ORDER BY
 |		.		|			.		|	       .		  |	   .	    		 |		.	       |
 |		.		|			.		|	       .		  |	   .	    		 |		.	       |
 +---------------+-------------------+---------------------+----------------------+-----------------+*/
--- Type your code below:
 
 -- Top 3 Genres based on most number of movies
 WITH top_3_genre AS
@@ -936,7 +860,6 @@ WHERE
 |	.				|		.			|			.		  |
 |	.				|		.			|			.		  |
 +-------------------+-------------------+---------------------+*/
--- Type your code below:
 
 WITH top_multilingual_prod_comp AS 
 (
@@ -962,22 +885,15 @@ SELECT *,
 FROM
 	top_multilingual_prod_comp
 LIMIT 2
-;
-
 
 -- Top two production companies are : Star Cinema with 7 movies and Twentieth Century Fox with 4 movies.
-
-
 
 -- Multilingual is the important piece in the above question. It was created using POSITION(',' IN languages)>0 logic
 -- If there is a comma, that means the movie is of more than one language
 
-
 -- Q28. Who are the top 3 actresses based on the number of Super Hit movies (Superhit movie: average rating of movie > 8) in 'drama' genre?
 
 -- Note: Consider only superhit movies to calculate the actress average ratings.
--- (Hint: You should use the weighted average based on votes. If the ratings clash, then the total number of votes
--- should act as the tie breaker. If number of votes are same, sort alphabetically by actress name.)
 
 /* Output format:
 +---------------+-------------------+---------------------+----------------------+-----------------+
@@ -987,8 +903,6 @@ LIMIT 2
 |		.		|			.		|	       .		  |	   .	    		 |		.	       |
 |		.		|			.		|	       .		  |	   .	    		 |		.	       |
 +---------------+-------------------+---------------------+----------------------+-----------------+*/
-
--- Type your code below:
 
 WITH top_actress AS
 (
@@ -1049,7 +963,6 @@ Format:
 +---------------+-------------------+---------------------+----------------------+--------------+--------------+------------+------------+----------------+
 
 --------------------------------------------------------------------------------------------*/
--- Type you code below:
 
 WITH top_directors AS
 (
