@@ -49,6 +49,7 @@ The file `Database Creation.sql` handles the complete setup of the `imdb` databa
     * `director_mapping`
     * `role_mapping`
 * **Data Insertion:** The script contains all `INSERT` statements to populate the tables with the provided dataset.
+<img width="1149" height="758" alt="image" src="https://github.com/user-attachments/assets/f7af0ab8-37b0-4f86-bf3f-bb42da1490f7" />
 
 
 
@@ -75,9 +76,12 @@ The analysis includes:
 
 The SQL analysis (found in `IMDB-question.sql`) provides several key recommendations for RSVP Movies:
 
-* **Top Genres:** [**Add your key finding here, e.g., "Drama was the most-produced genre, while Thriller and Action had the highest average ratings."**]
-* **Top Talent:** [**Add your finding, e.g., "The analysis identified James Mangold and the Russo brothers as top directors. Mammootty and Mohanlal were the highest-rated lead actors."**]
-* **Indian Market:** [**Add your finding, e.g., "For the Indian market, Taapsee Pannu emerged as the top-rated actress, suggesting a strong audience preference."**]
+* **Top Genres:** Drama, Action and Thriller
+* **Talent:** * Top Directors - James Mangold, Joe Russo, Anthony Russo
+              * Top actors - Vijay Sethupathi and Fahadh Faasil
+              * Top actresses in Hindi - Taapsee Pannu, Kriti Sanon, and Shraddha Kapoor
+              * Production Company - Star Cinema and Twentieth Century Fox led among multilingual, highrated films
+
 
 ---
 
