@@ -83,6 +83,13 @@ The SQL analysis (found in `IMDB-question.sql`) provides several key recommendat
 * Top actresses in Hindi - Taapsee Pannu, Kriti Sanon, and Shraddha Kapoor
 * Production Company - Star Cinema and Twentieth Century Fox led among multilingual, highrated films
 
+### Recommendations:
+* Producing a multilingual, high-quality film that blends action/drama can attract both
+domestic and international audiences.
+* Collaborate with established directors and actors with a strong past performance in globally
+released movies.
+* Plan the movie release between October and December 2022 to maximize global attention.
+
 
 ---
 
