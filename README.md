@@ -77,10 +77,11 @@ The analysis includes:
 The SQL analysis (found in `IMDB-question.sql`) provides several key recommendations for RSVP Movies:
 
 * **Top Genres:** Drama, Action and Thriller
-* **Talent:** * Top Directors - James Mangold, Joe Russo, Anthony Russo
-              * Top actors - Vijay Sethupathi and Fahadh Faasil
-              * Top actresses in Hindi - Taapsee Pannu, Kriti Sanon, and Shraddha Kapoor
-              * Production Company - Star Cinema and Twentieth Century Fox led among multilingual, highrated films
+* **Talent:**
+*  Top Directors - James Mangold, Joe Russo, Anthony Russo
+* Top actors - Vijay Sethupathi and Fahadh Faasil
+* Top actresses in Hindi - Taapsee Pannu, Kriti Sanon, and Shraddha Kapoor
+* Production Company - Star Cinema and Twentieth Century Fox led among multilingual, highrated films
 
 
 ---
